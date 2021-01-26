@@ -3,6 +3,7 @@ package cn.com.taiji.spring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 public class SpringApplication {
@@ -26,6 +27,8 @@ public class SpringApplication {
         //使用注解
        AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
        context.register(AppConfig.class);
+//    AplicationStartedListener中加入注解@Component可以不用写下面一行
+//       context.addApplicationListener(new AplicationStartedListener());
        context.refresh();
 
 
@@ -34,7 +37,7 @@ public class SpringApplication {
 //     for(String beanName:context.getBeanDefinitionNames()){
 //         System.out.println(beanName);
 //     }
-        CollectionUtils.arrayToList(context.getBeanDefinitionNames()).forEach(item-> System.out.println(item));
+//        CollectionUtils.arrayToList(context.getBeanDefinitionNames()).forEach(item-> System.out.println(item));
         UserService userService=context.getBean(UserService.class);
         userService.save();
 
