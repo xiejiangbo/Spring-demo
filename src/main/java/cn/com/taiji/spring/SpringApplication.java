@@ -1,10 +1,6 @@
 package cn.com.taiji.spring;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 public class SpringApplication {
 //    public static void main(String[] args) {
@@ -38,11 +34,15 @@ public class SpringApplication {
 //         System.out.println(beanName);
 //     }
 //        CollectionUtils.arrayToList(context.getBeanDefinitionNames()).forEach(item-> System.out.println(item));
-        UserService userService=context.getBean(UserService.class);
+        UserServiceImpl userService=context.getBean(UserServiceImpl.class);
+        UserServiceImpl userService1=context.getBean(UserServiceImpl.class);
         userService.save();
+        System.out.println( userService);
+        System.out.println( userService1);
 
+//        System.out.println(SingleTonUser.getInstance());
+//        System.out.println(SingleTonUser.getInstance());
 
-
-
+            userService.save();
     }
 }
