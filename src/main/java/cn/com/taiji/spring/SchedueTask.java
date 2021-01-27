@@ -9,6 +9,6 @@ public class SchedueTask implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("scheueTask init finish");
+//        System.out.println("scheueTask init finish");
     }
 }

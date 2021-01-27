@@ -45,12 +45,16 @@ public class SpringApplication {
 //一个$符号代表Jdk动态代理，两个$$代表Cglib动态代理
 
             UserDao userDao=context.getBean(UserDao.class);
-        System.out.println(userDao.getClass());
+//        System.out.println(userDao.getClass());
+//        //代理类的父类是userDao
+//        System.out.println(userDao.getClass().getSuperclass());
             userDao.save();
 //
-        //jdk只能通过getBean("userService")名字拿实例，而Cglib可以通过getBean(UserDao.class)拿实例;为了保险起见，统一用名字获取Bean
+        //jdk只能通过getBean("userService")名字获取Bean，而Cglib可以通过getBean(UserDao.class)获取Bean;为了保险起见，统一用名字获取Bean
 //            UserService userService=(UserService) context.getBean("userService");
 //        System.out.println(userService.getClass());
+//        //        //代理类的实现接口是UserService
+//        System.out.println(userService.getClass().getInterfaces()[0]);
 //            userService.save();
 
     }

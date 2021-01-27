@@ -4,10 +4,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.util.CollectionUtils;
 
+@EnableAspectJAutoProxy
 @Configuration
 //ComponentScan相当于@Bean,扫描包
 @ComponentScan("cn.com.taiji.spring")
@@ -27,9 +29,9 @@ public class AppConfig {
 
 @EventListener
     public void refreshedListener(ContextRefreshedEvent event){
-    System.out.println(event.getTimestamp());
-           ApplicationContext context=event.getApplicationContext();
-       CollectionUtils.arrayToList(context.getBeanDefinitionNames()).forEach(item-> System.out.println(item));
+//    System.out.println(event.getTimestamp());
+//           ApplicationContext context=event.getApplicationContext();
+//       CollectionUtils.arrayToList(context.getBeanDefinitionNames()).forEach(item-> System.out.println(item));
 
 }
 

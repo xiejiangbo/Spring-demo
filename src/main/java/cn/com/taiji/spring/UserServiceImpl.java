@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@Service
+@Service("userService")
 //@Scope("prototype")注解配置多例模式
 @Scope("prototype")
 public class UserServiceImpl implements UserService{
@@ -25,5 +25,11 @@ public class UserServiceImpl implements UserService{
     public  void save(){
 //        userDao.save();
         System.out.println("service save");
+    }
+
+    @Override
+    public void update() {
+        System.out.println("service update");
+
     }
 }
