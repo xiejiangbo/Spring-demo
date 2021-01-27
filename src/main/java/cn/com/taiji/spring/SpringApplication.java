@@ -34,15 +34,24 @@ public class SpringApplication {
 //         System.out.println(beanName);
 //     }
 //        CollectionUtils.arrayToList(context.getBeanDefinitionNames()).forEach(item-> System.out.println(item));
-        UserServiceImpl userService=context.getBean(UserServiceImpl.class);
-        UserServiceImpl userService1=context.getBean(UserServiceImpl.class);
-        userService.save();
-        System.out.println( userService);
-        System.out.println( userService1);
+//        UserServiceImpl userService=context.getBean(UserServiceImpl.class);
+//        UserServiceImpl userService1=context.getBean(UserServiceImpl.class);
+//        userService.save();
+//        System.out.println( userService);
+//        System.out.println( userService1);
 
 //        System.out.println(SingleTonUser.getInstance());
 //        System.out.println(SingleTonUser.getInstance());
+//一个$符号代表Jdk动态代理，两个$$代表Cglib动态代理
 
-            userService.save();
+            UserDao userDao=context.getBean(UserDao.class);
+        System.out.println(userDao.getClass());
+            userDao.save();
+//
+        //jdk只能通过getBean("userService")名字拿实例，而Cglib可以通过getBean(UserDao.class)拿实例;为了保险起见，统一用名字获取Bean
+//            UserService userService=(UserService) context.getBean("userService");
+//        System.out.println(userService.getClass());
+//            userService.save();
+
     }
 }
