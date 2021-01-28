@@ -7,6 +7,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
+import java.lang.annotation.Annotation;
+
 @Component
 @Aspect
 public class LogAspect {
@@ -15,16 +17,16 @@ public class LogAspect {
     public void pointCut(){
 
     }
-    @Around("pointCut()")
-    public  void around(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("pointCut()&&@annotation(transation)")
+    public  void around(ProceedingJoinPoint joinPoint,Transation transation) throws Throwable {
 
 //        System.out.println(" aspectj before");
 //        joinPoint.proceed(joinPoint.getArgs());
 //        System.out.println(" aspectj after");
 
-        MethodSignature methodSignature=(MethodSignature) joinPoint.getSignature();
-
-        Transation transation=methodSignature.getMethod().getAnnotation(Transation.class);
+//        MethodSignature methodSignature=(MethodSignature) joinPoint.getSignature();
+//
+//        Transation transation=methodSignature.getMethod().getAnnotation(Transation.class);
 
         if(transation!=null){
             System.out.println(transation.propagate());
